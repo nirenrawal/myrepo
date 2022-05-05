@@ -1,4 +1,5 @@
 % include("header", title="Admin")
+    
 
 
 <nav class="flex justify-end p-3">
@@ -11,13 +12,14 @@
 
 </nav>
 
-<main>
-    <table>
+<main class="m-4 bg-blue-100">
+    <table class="table-fixed border-collapse border border-slate-500">
         <thead>
             <tr>
-                <th scope="col">Username</th>
-                <th scope="col">Tweet</th>
-                <th scope="col">Tweet Id</th>
+                <th class="py-2 px-4 border border-slate-300" scope="col">Username</th>
+                <th class="py-2 px-4 border border-slate-300" scope="col">Tweet</th>
+                <th class="py-2 px-4 border border-slate-300" scope="col">Tweet Id</th>
+                <th class="py-2 px-4 border border-slate-300" scope="col"></th>
             </tr>
         </thead>
         % for tweet in tweets:
@@ -25,10 +27,12 @@
             <tr>
                 <form action="delete-user" method="post">
                     <input name="user_id" type="hidden">
-                    <td>@{{tweet["user_name"]}}</td>
-                    <td>{{tweet["tweet_text"]}}</td>
-                    <td>{{tweet["tweet_id"]}}</td>
-                    <td><button onclick="deleteTweet(`{{tweet['tweet_id']}}`); return false"><i class="fa-solid fa-trash-can"></i></button></td>
+                    <td class="py-2 px-4 border border-slate-300">@{{tweet["user_name"]}}</td>
+                    <td class="py-2 px-4 border border-slate-300">{{tweet["tweet_text"]}}</td>
+                    <td class="py-2 px-4 border border-slate-300">{{tweet["tweet_id"]}}</td>
+                    <td class="py-2 px-4 border border-slate-300">
+                        <button class="py-1 px-3 bg-red-700 text-white font-bold rounded-2xl hover:bg-red-400" onclick="deleteTweet(`{{tweet['tweet_id']}}`); return false"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
                 </form>
             </tr>
         </tbody>
@@ -39,7 +43,7 @@
     % end
 </main>
 
-<footer class="flex justify-between w-full bg-gray-200 text-center text-sm p-2 text-gray-500">
+<footer class="flex justify-between w-full bg-gray-200 text-center text-sm p-2 text-gray-500 absolute bottom-0">
     <div>About</div>
     <div>Help Center</div>
     <div>Terms of Servie</div>
@@ -56,3 +60,7 @@
     <div>Settings</div>
     <div> &copy; Twitter, Inc.</div>
 </footer>
+<script src="../app.js"></script>
+
+</body>
+</html>
