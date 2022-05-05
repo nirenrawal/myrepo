@@ -1,6 +1,5 @@
 
-from bottle import error, get, response, request, redirect, run, static_file, view
-
+from bottle import error, get, run, static_file, view
 
 from AUTH.GET import(
     signup_get,

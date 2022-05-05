@@ -1,15 +1,15 @@
 function _one(q, e=document){return e.querySelector(q)}
 function _all(q, e=document){return e.querySelectorAll(q)}
 
-// const tweetPostElement = document.querySelector('#tweet-post');
+
 const addTweetForm = document.querySelector('.creatTweet');
-// const btnSubmit = document.querySelector('#submit-main-tweet');
+
 const tweetInput = document.querySelector('#tweet-input');
 const tweetText = document.querySelectorAll('.tweetText');
 const editSubmitButton = document.querySelector('#update-submit-btn');
 
 
-/////////////////////////////// TWEET OVERLAY //////////////////////////////////////
+//Tweet modal
 function toggleCreateTweetModal(){
     document.querySelector("#createTweetModal").classList.toggle("hidden")
 }
@@ -24,7 +24,7 @@ function openEditForm(tweet_id) {
     toggleUpdateTweetModal()
 }
 
-/////////// CREATE TWEET - FETCH //////////////
+//Send tweet
 async function createTweet(){
     const form = event.target
     // Get the button, set the data-await, and disable it
@@ -72,11 +72,6 @@ async function createTweet(){
             </div>
 
             
-         
-
-
-
-          
 
             <div class="flex flex-row mt-4 text-lg text-gray-400 ">
                     <div class="hover:text-blue1 basis-2/12">
@@ -109,13 +104,14 @@ async function createTweet(){
         </div>
       </div>
       `
-    incrementedValueMainElement.innerText = 0
-    incrementedValueQuickElement.innerText = 0
+  
     document.querySelector(".tweet-post").insertAdjacentHTML("afterbegin", tweet_post)
     _one(".createTweet", form).value = ""
     document.querySelector("#createTweetModal").classList.add("hidden")
+    incrementedValueMainElement.innerText = 0
+    incrementedValueQuickElement.innerText = 0
    
-    hideBrokenImage();
+    // hideBrokenImage();
 }
 
 function likeTweet(tweet_id) {
@@ -156,7 +152,7 @@ async function updateTweet(tweet_id) {
     
 }
 
-/////////// DELETE TWEET //////////////
+//delete
 async function deleteTweet(tweet_id) {
     const connection = await fetch(`/tweets/${tweet_id}`, {
         method : "DELETE"
@@ -197,19 +193,19 @@ function updateCharactersQuick() {
 
 // //////////////////////////////////////////////////////////////////////  JQuery  //////////////////////////////////////////////////////////////////////////////////////
 // JQuery - hide borken image //
-function hideBrokenImage() {
-    $('.userProfile').on("error", function() {
-        $(this).attr('src', '/static/images/user_profile_pictures/default_profile_picture.png');
-    });
+// function hideBrokenImage() {
+//     $('.userProfile').on("error", function() {
+//         $(this).attr('src', '/static/images/user_profile_pictures/default_profile_picture.png');
+//     });
 
-    // Hide broken img when img not passed
-    $(".tweetImg").on("error", function() {
-        $(this).hide();
-    });
-}
+//     // Hide broken img when img not passed
+//     $(".tweetImg").on("error", function() {
+//         $(this).hide();
+//     });
+// }
 
 // Get image file_name
-const file = document.querySelector(".editTweet");
-function getFileName(){ 
-document.querySelector(".display-filename").innerText = file.value.split('\\').pop().split('/').pop();
-};
+// const file = document.querySelector(".editTweet");
+// function getFileName(){ 
+// document.querySelector(".display-filename").innerText = file.value.split('\\').pop().split('/').pop();
+// };
