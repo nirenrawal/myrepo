@@ -1,0 +1,44 @@
+<section id="updateTweetModal" class="fixed w-screen h-screen z-10 hidden">
+    <div class="absolute h-full w-full bg-black bg-opacity-50" onclick="toggleUpdateTweetModal()">
+    </div>
+    
+  <!--  TWEET BOX -->
+    <div class="relative z-10 bg-white rounded-lg w-2/4 h-80 mx-auto mt-20">
+      <form onsubmit="return false" name="myForm" class="updateTweet"  id="edit-form" autocomplete="off" enctype="multipart/form-data">
+        <div>
+          <img 
+            class="absolute ml-12 mt-12 flex-none w-14 h-14 object-cover rounded-full userProfile" 
+            src="/images/{{user_image}}" 
+            onError="this.onerror=null;this.src='/images/barca.png';"
+          >
+          <textarea 
+            id="tweet-input" 
+            name="tweet_text" 
+            class="createTweet ml-28 mt-12 text-2xl placeholder:text-gray-700 pl-4 pt-3 outline-none border-none " 
+            cols="48" 
+            rows="6" 
+            placeholder="What's happening?">
+          </textarea>
+        </div>
+        <hr>    
+        <div class="ml-28 mt-4 border-none">
+          <input class=" 
+          editTweet-image-update
+          editTweet
+          font-normal
+          text-gray-700
+          rounded
+          transition
+          ease-in-out
+          focus:text-gray-700 focus:outline-none" name="tweet_image" type="file" id="formFile">
+        </div>
+        <button id="update-submit-btn" type="submit" class="absolute bottom-2 right-2 px-8 py-2 bg-blue2 text-white font-semibold rounded-full"
+                data-default="Tweet"
+                data-await="Tweeting..."
+              >
+                Tweet
+        </button>
+      </form>
+    </div>
+  </section>
+  
